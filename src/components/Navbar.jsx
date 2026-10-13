@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Car, Heart, User, LogOut, Menu, X } from 'lucide-react';
+import { Car, Heart, User, LogOut, Menu, X, Terminal } from 'lucide-react';
 import GoldMenu from './GoldMenu.jsx';
 
 export default function Navbar({
   wishlistCount = 0,
   onOpenWishlist,
   onOpenAuth,
+  onOpenCppEngine,
   currentUser,
   onLogout,
   onNavigateSection,
@@ -88,6 +89,18 @@ export default function Navbar({
 
         {/* Top Bar Actions */}
         <div className="navbar-actions">
+          {/* C++ Core Engine Terminal Trigger */}
+          <button
+            type="button"
+            className="btn btn-secondary btn-sm"
+            onClick={onOpenCppEngine}
+            title="Inspect C++ OOP Core Engine & Unit Tests"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', border: '1px solid rgba(16, 185, 129, 0.4)' }}
+          >
+            <Terminal size={14} color="var(--btn-primary)" />
+            <span>C++ Engine</span>
+          </button>
+
           {/* Wishlist Button */}
           <button
             type="button"

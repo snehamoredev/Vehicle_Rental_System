@@ -14,6 +14,7 @@ import AboutUs from './components/AboutUs.jsx';
 import ContactForm from './components/ContactForm.jsx';
 import Footer from './components/Footer.jsx';
 import Toast from './components/Toast.jsx';
+import CppEngineModal from './components/CppEngineModal.jsx';
 
 import { INITIAL_VEHICLES } from './data/vehicles.js';
 import { filterVehicles } from './services/vehicleFilter.js';
@@ -86,6 +87,7 @@ export default function App() {
   const [isWishlistOpen, setIsWishlistOpen] = useState<boolean>(false);
   const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState<boolean>(false);
+  const [isCppEngineOpen, setIsCppEngineOpen] = useState<boolean>(false);
 
   // User Authentication State (Demo only)
   const [currentUser, setCurrentUser] = useState<DemoUser | null>(null);
@@ -230,6 +232,7 @@ export default function App() {
         wishlistCount={wishlistIds.length}
         onOpenWishlist={() => setIsWishlistOpen(true)}
         onOpenAuth={() => setIsLoginOpen(true)}
+        onOpenCppEngine={() => setIsCppEngineOpen(true)}
         currentUser={currentUser}
         onLogout={handleLogout}
         onNavigateSection={(id: string) => {
@@ -460,6 +463,12 @@ export default function App() {
           setIsRegisterOpen(false);
           setIsLoginOpen(true);
         }}
+      />
+
+      {/* C++ Core Engine Interactive Inspector */}
+      <CppEngineModal
+        isOpen={isCppEngineOpen}
+        onClose={() => setIsCppEngineOpen(false)}
       />
 
       {/* Toast System */}
